@@ -27,10 +27,10 @@
         <br>
         <div class="row">   
             <div class="col">
-                <label for="userNumber">Select a number between 1 and 1000:</label>
-                <input type="range" id="userNumber" name="userNumber" min="0" max="1000" step="1" value="500">
+                <label for="userNumber">Select a number from the slider:</label> <!-- edit this to be dynamic so it displays text from minValue and maxValue-->
+                <input type="range" id="userNumber" name="userNumber">
                 <!-- add ticks to the slider so it's easier for the user to see what number they are selecting -->
-                <!-- add element that displays the number selected on slider -->
+                <!-- add a box that displays the number selected on slider, eg. You have chosen: -->
             </div>
         </div>
         <br>
@@ -48,6 +48,15 @@
 
     <script>
 
+        // Define the min and max values for the userNumber
+        // Still hard coded here, but at least it's now just one point in the script
+        // Improve this further by making the min and max values dynamic, perhaps based on the user's input or defining them in a SQL database?
+        const minValue = 1;
+        const maxValue = 1000;
+
+        document.getElementById("userNumber").min = minValue;
+        document.getElementById("userNumber").max = maxValue;
+
         // Get the value of the userNumber when the "Play game!" button is clicked
         const playGameBtn = document.getElementById("playGame");
 
@@ -62,14 +71,14 @@
             // Display user number to console whilst developing
             console.log(userNumber.value);
 
-            // Generate a random number between 1 and 1000
+            // Generate a random number between minValue and maxValue
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
             // Usually in R when generating random numbers I set a seed. 
             // Doesn't seem like this is possible for Math.random():
             // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
 
-            const randomNumber = Math.floor(Math.random() * 1000) + 1; // ensure the random number is between 1 and 1000
+            const randomNumber = Math.floor(Math.random() * maxValue - minValue) + minValue; // ensure the random number is between minValue and maxValue
             console.log(randomNumber);
 
             // Compare the userNumber with the random number
