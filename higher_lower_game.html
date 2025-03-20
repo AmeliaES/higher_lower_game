@@ -11,7 +11,7 @@
     <title>Higher or lower?</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container">  <!-- use bootstrap grid containers to organise the display text, user input and output -->
         <div class="row">
             <div class="col">
                 <h1>Higher or lower?</h1>
@@ -28,7 +28,7 @@
         <div class="row">   
             <div class="col">
                 <label for="userNumber">Select a number from the slider:</label> <!-- edit this to be dynamic so it displays text from minValue and maxValue-->
-                <input type="range" id="userNumber" name="userNumber">
+                <input type="range" id="userNumber" name="userNumber"> <!-- use a slider for user to input values (https://www.w3schools.com/html/html_form_input_types.asp)-->
                 <!-- add ticks to the slider so it's easier for the user to see what number they are selecting -->
                 <!-- add a box that displays the number selected on slider, eg. You have chosen: -->
             </div>
@@ -36,7 +36,7 @@
         <br>
         <div class="row">
             <div class="col">
-                <button type="button" id="playGame" class="btn btn-primary">Play game!</button>
+                <button type="button" id="playGame" class="btn btn-primary">Play game!</button> <!-- include a button the user clicks to play the game-->
             </div>
         </div>
         <br>
@@ -57,7 +57,7 @@
         document.getElementById("userNumber").min = minValue;
         document.getElementById("userNumber").max = maxValue;
 
-        // Get the value of the userNumber when the "Play game!" button is clicked
+        // Get the value of the "Play game!" button, so this function runs when the button is clicked
         const playGameBtn = document.getElementById("playGame");
 
         // Add click event listener to the playGameBtn
@@ -79,6 +79,8 @@
             // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
 
             const randomNumber = Math.floor(Math.random() * maxValue - minValue) + minValue; // ensure the random number is between minValue and maxValue
+
+            // Display random number to console whilst developing
             console.log(randomNumber);
 
             // Compare the userNumber with the random number
@@ -97,6 +99,8 @@
         const printResult = (result) => {
             // Get the result element, this is the text displayed to the user, with the results of the game
             const resultText = document.getElementById("result");
+            
+            // Write the result text to the result element
             resultText.innerHTML = result;
         }      
 
