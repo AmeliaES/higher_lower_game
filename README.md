@@ -23,4 +23,6 @@ Reflections:
 - It would be good to add a test for selecting these limits. I manually changed the maxValue to 4000 whilst developing to see if this altered the values on the slider, which it did. A much better way to do this would be to test it using eg. Cypress.
 - THe choice of the slider was initially because this is more visually appealling than a box where the user can write in a number. However, it is difficult to accurately select a number from this. In hindsight perhaps a box would be better so the user could input the number they were thinking of directly.
 
-
+---
+Screenshot of game whilst developing:
+<img width="1706" alt="Screenshot 2025-03-20 at 17 55 12" src="https://github.com/user-attachments/assets/7d72710f-fa87-4ed3-9de0-ed84d4dacb5f" />
