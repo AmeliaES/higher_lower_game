@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Higher or lower?</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Higher or lower?</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <p>Try and guess what the randomly generated number from the computer is! Select a number between 1 and 1000. The computer will generate a random number.</p>
+                <h4>Let's find out if your number is higher, lower or equal to the computer's number!</h4>
+            </div>
+        </div>
+        <br>
+        <div class="row">   
+            <div class="col">
+                <label for="userNumber">Select a number between 1 and 1000:</label>
+                <input type="range" id="userNumber" name="userNumber" min="0" max="1000" step="1" value="500">
+                <!-- add ticks to the slider so it's easier for the user to see what number they are selecting -->
+                <!-- add element that displays the number selected on slider -->
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <button type="button" id="playGame" class="btn btn-primary">Play game!</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <p id="result"></p>
+            </div>
+        </div>
+
+    <script>
+
+        // Get the value of the userNumber when the "Play game!" button is clicked
+        const playGameBtn = document.getElementById("playGame");
+
+        // Add click event listener to the playGameBtn
+        playGameBtn.addEventListener("click", () => playGame());
+
+        // Define the playGame function
+        const playGame = () => {
+
+            // Get the value of the userNumber when the "Play game!" button is clicked
+            const userNumber = document.getElementById("userNumber");
+            // Display user number to console whilst developing
+            console.log(userNumber.value);
+
+            // Generate a random number between 1 and 1000
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+            // Usually in R when generating random numbers I set a seed. 
+            // Doesn't seem like this is possible for Math.random():
+            // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
+
+            const randomNumber = Math.floor(Math.random() * 1000) + 1; // ensure the random number is between 1 and 1000
+            console.log(randomNumber);
+
+            // Compare the userNumber with the random number
+            // And display the text for the output of the game to the user   
+            if(userNumber.value > randomNumber) {
+                printResult(`You answered ${userNumber.value}. The correct answer is ${randomNumber}, which is higher.`);
+            } else if(userNumber.value < randomNumber) {
+                printResult(`You answered ${userNumber.value}. The correct answer is ${randomNumber}, which is lower.`);
+            } else {
+                printResult(`You answered ${userNumber.value}. This is the correct answer!`);
+            }
+
+        }
+
+        // Define a function that displays the text for the output of the game to the user   
+        const printResult = (result) => {
+            // Get the result element, this is the text displayed to the user, with the results of the game
+            const resultText = document.getElementById("result");
+            resultText.innerHTML = result;
+        }      
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
