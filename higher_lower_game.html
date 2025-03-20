@@ -85,9 +85,9 @@
 
             // Compare the userNumber with the random number
             // And display the text for the output of the game to the user   
-            if(userNumber.value > randomNumber) {
+            if(userNumber.value < randomNumber) {
                 printResult(`You answered ${userNumber.value}. The correct answer is ${randomNumber}, which is higher.`);
-            } else if(userNumber.value < randomNumber) {
+            } else if(userNumber.value > randomNumber) {
                 printResult(`You answered ${userNumber.value}. The correct answer is ${randomNumber}, which is lower.`);
             } else {
                 printResult(`You answered ${userNumber.value}. This is the correct answer!`);
@@ -99,7 +99,7 @@
         const printResult = (result) => {
             // Get the result element, this is the text displayed to the user, with the results of the game
             const resultText = document.getElementById("result");
-            
+
             // Write the result text to the result element
             resultText.innerHTML = result;
         }      
